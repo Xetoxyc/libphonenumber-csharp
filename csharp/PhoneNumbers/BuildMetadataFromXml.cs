@@ -90,8 +90,7 @@ namespace PhoneNumbers
                 isShortNumberMetadata, isAlternateFormatsMetadata);
         }
 
-        // @VisibleForTesting
-        private static PhoneMetadataCollection BuildPhoneMetadataCollection(XDocument document,
+        internal static PhoneMetadataCollection BuildPhoneMetadataCollection(XDocument document,
             bool liteBuild, bool specialBuild, bool isShortNumberMetadata,
             bool isAlternateFormatsMetadata)
         {
@@ -163,8 +162,7 @@ namespace PhoneNumbers
         /**
         * Returns the national prefix of the provided country element.
         */
-        // @VisibleForTesting
-        public static string GetNationalPrefix(XElement element)
+        internal static string GetNationalPrefix(XElement element)
         {
             return element.GetAttribute(NATIONAL_PREFIX);
         }
@@ -213,8 +211,7 @@ namespace PhoneNumbers
         * @throws  RuntimeException if multiple intlFormats have been encountered.
         * @return  whether an international number format is defined.
         */
-        // @VisibleForTesting
-        public static bool LoadInternationalFormat(PhoneMetadata.Builder metadata,
+        internal static bool LoadInternationalFormat(PhoneMetadata.Builder metadata,
             XElement numberFormatElement,
             string nationalFormat)
         {
@@ -250,8 +247,7 @@ namespace PhoneNumbers
          * @throws  RuntimeException if multiple or no formats have been encountered.
          * @return  the national format string.
          */
-        // @VisibleForTesting
-        public static string LoadNationalFormat(PhoneMetadata.Builder metadata, XElement numberFormatElement,
+        internal static string LoadNationalFormat(PhoneMetadata.Builder metadata, XElement numberFormatElement,
             NumberFormat.Builder format)
         {
             SetLeadingDigitsPatterns(numberFormatElement, format);
@@ -272,8 +268,7 @@ namespace PhoneNumbers
         *  nationalPrefixFormattingRule and nationalPrefixOptionalWhenFormatting values are provided from
         *  the parent (territory) element.
         */
-        // @VisibleForTesting
-        public static void LoadAvailableFormats(PhoneMetadata.Builder metadata,
+        internal static void LoadAvailableFormats(PhoneMetadata.Builder metadata,
             XElement element, string nationalPrefix,
             string nationalPrefixFormattingRule,
             bool nationalPrefixOptionalWhenFormatting)
@@ -433,8 +428,7 @@ namespace PhoneNumbers
             return numberDesc;
         }
 
-        // @VisibleForTesting
-        private static void SetRelevantDescPatterns(PhoneMetadata.Builder metadata, XElement element,
+        internal static void SetRelevantDescPatterns(PhoneMetadata.Builder metadata, XElement element,
             bool isShortNumberMetadata)
         {
             var generalDescBuilder = ProcessPhoneNumberDescElement(null, element,
@@ -572,8 +566,7 @@ namespace PhoneNumbers
         /**
          * Sets possible lengths in the general description, derived from certain child elements.
          */
-        // @VisibleForTesting
-        private static void SetPossibleLengthsGeneralDesc(PhoneNumberDesc.Builder generalDesc, string metadataId,
+        internal static void SetPossibleLengthsGeneralDesc(PhoneNumberDesc.Builder generalDesc, string metadataId,
             XElement data, bool isShortNumberMetadata)
         {
             var lengths = new SortedSet<int>();
@@ -672,8 +665,7 @@ namespace PhoneNumbers
             return input;
         }
 
-        // @VisibleForTesting
-        public static void LoadGeneralDesc(PhoneMetadata.Builder metadata, XElement element)
+        internal static void LoadGeneralDesc(PhoneMetadata.Builder metadata, XElement element)
         {
             var generalDescBuilder = ProcessPhoneNumberDescElement(null, element, GENERAL_DESC);
             SetPossibleLengthsGeneralDesc(generalDescBuilder, metadata.Id, element, false);
@@ -736,7 +728,6 @@ namespace PhoneNumbers
         * @param liteBuild  The liteBuild flag value as given by the command-line
         * @param specialBuild  The specialBuild flag value as given by the command-line
         */
-        // @VisibleForTesting
         internal static MetadataFilter GetMetadataFilter(bool liteBuild, bool specialBuild)
         {
             if (specialBuild)
