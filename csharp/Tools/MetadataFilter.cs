@@ -17,8 +17,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using PhoneNumbers;
 
-namespace PhoneNumbers
+namespace Tools
 {
     /**
      * Class to encapsulate the metadata filtering logic and restrict visibility into raw data
