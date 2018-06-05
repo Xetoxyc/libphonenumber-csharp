@@ -548,7 +548,7 @@ namespace Tools
                     var intersection = thisElementLengths.Intersect(thisElementLocalOnlyLengths).ToList();
                     if (intersection.Count != 0)
                         throw new Exception(
-                            $"Possible length(s) found specified as a normal and local-only length: {intersection}");
+                            $"Possible length(s) found specified as a normal and local-only length: {string.Join(", ", intersection)}");
                     // We check again when we set these lengths on the metadata itself in setPossibleLengths
                     // that the elements in localOnly are not also in lengths. For e.g. the generalDesc, it
                     // might have a local-only length for one type that is a normal length for another type. We
